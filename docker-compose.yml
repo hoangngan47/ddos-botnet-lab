@@ -1,0 +1,422 @@
+services:
+  server:
+    image: node:18
+    container_name: server
+    working_dir: /app
+    volumes:
+      - ./server:/app
+    command: node server.js
+    ports:
+      - "3000:3000"
+    environment:
+      - RATE_LIMIT=false  # Set to 'true' to enable rate limiting
+      - OVERLOAD_THRESHOLD=500
+      - PROCESSING_TIME=5
+    networks:
+      - botnet
+
+  cnc:
+    image: python:3.10
+    container_name: cnc
+    working_dir: /app
+    volumes:
+      - ./cnc:/app
+      - shared:/shared
+    command: python cnc.py
+    stdin_open: true
+    tty: true
+    networks:
+      - botnet
+  
+  #20 bot; 5000 request/bot; 20 luong
+  # Bot 1
+  bot_1:
+    image: python:3.10
+    container_name: bot_1
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_1
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 2
+  bot_2:
+    image: python:3.10
+    container_name: bot_2
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_2
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 3
+  bot_3:
+    image: python:3.10
+    container_name: bot_3
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_3
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 4
+  bot_4:
+    image: python:3.10
+    container_name: bot_4
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_4
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 5
+  bot_5:
+    image: python:3.10
+    container_name: bot_5
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_5
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 6
+  bot_6:
+    image: python:3.10
+    container_name: bot_6
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_6
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 7
+  bot_7:
+    image: python:3.10
+    container_name: bot_7
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_7
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 8
+  bot_8:
+    image: python:3.10
+    container_name: bot_8
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_8
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 9
+  bot_9:
+    image: python:3.10
+    container_name: bot_9
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_9
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 10
+  bot_10:
+    image: python:3.10
+    container_name: bot_10
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_10
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 11
+  bot_11:
+    image: python:3.10
+    container_name: bot_11
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_11
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 12
+  bot_12:
+    image: python:3.10
+    container_name: bot_12
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_12
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 13
+  bot_13:
+    image: python:3.10
+    container_name: bot_13
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_13
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 14
+  bot_14:
+    image: python:3.10
+    container_name: bot_14
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_14
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 15
+  bot_15:
+    image: python:3.10
+    container_name: bot_15
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_15
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 16
+  bot_16:
+    image: python:3.10
+    container_name: bot_16
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_16
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 17
+  bot_17:
+    image: python:3.10
+    container_name: bot_17
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_17
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 18
+  bot_18:
+    image: python:3.10
+    container_name: bot_18
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_18
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 19
+  bot_19:
+    image: python:3.10
+    container_name: bot_19
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_19
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+  # Bot 20
+  bot_20:
+    image: python:3.10
+    container_name: bot_20
+    working_dir: /app
+    volumes:
+      - ./bot:/app
+      - shared:/shared
+    command: sh -c "pip install requests -q && python bot.py"
+    environment:
+      - BOT_ID=Bot_20
+      - TARGET=http://server:3000
+      - REQUEST_COUNT=5000
+      - CONCURRENT_THREADS=20
+    depends_on:
+      - server
+    networks:
+      - botnet
+
+volumes:
+  shared:
+
+networks:
+  botnet:
+    driver: bridge
+
+
+
+
+
