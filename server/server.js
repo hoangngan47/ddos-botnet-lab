@@ -37,8 +37,8 @@ const server = http.createServer((req, res) => {
     
     // Handle metrics endpoint - NO counting, NO rate limiting
     if (req.url === "/metrics" && req.method === "GET") {
-        const uptime = (Date.now() - metrics.startTime) / 1000;
-        const rps = metrics.totalRequests / uptime;
+        const uptime = (Date.now() - metrics.startTime) / 1000; //time sever live
+        const rps = metrics.totalRequests / uptime;  // total rq/time sv live
         
         res.writeHead(200, { "Content-Type": "application/json" });
         res.end(JSON.stringify({

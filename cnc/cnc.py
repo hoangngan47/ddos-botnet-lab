@@ -4,7 +4,7 @@ import json
 import glob
 from datetime import datetime
 
-COMMAND_FILE = "/shared/command.txt"
+COMMAND_FILE = "/shared/command.txt" #important file - contact file
 METRICS_DIR = "/shared"
 
 def init_command_file():
