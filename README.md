@@ -1,3 +1,11 @@
+DDoS Botnet Lab 
+
+Môi trường: 
+Cài Docker Desktop
+https://www.docker.com/products/docker-desktop/
+
+
+Giới thiệu
 Project mô phỏng cơ chế hoạt động cơ bản của một cuộc tấn công DDoS sử dụng Docker container.
 
 Hệ thống gồm:
@@ -24,4 +32,3 @@ Mở C&C Console
 docker exec -it cnc python cnc.py
 >ATTACK 
 >STOP
-
